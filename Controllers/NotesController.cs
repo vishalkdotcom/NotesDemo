@@ -29,6 +29,8 @@ namespace NotesDemo.Controllers
         }
 
         // GET: api/notes
+        [Produces("application/json")]
+        [HttpGet]
         public async Task<ActionResult<List<NoteModel>>> Get([FromQuery]int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -42,6 +44,7 @@ namespace NotesDemo.Controllers
         }
 
         // GET: api/notes/5
+        [Produces("application/json")]
         [HttpGet("{id}")]
         public async Task<ActionResult<NoteModel>> GetNote(string id)
         {
@@ -55,6 +58,8 @@ namespace NotesDemo.Controllers
         }
 
         // POST: api/notes
+        [Consumes("application/json")]
+        [Produces("application/json")]
         [HttpPost]
         public async Task<ActionResult<NoteModel>> Create([FromBody]NoteModel model)
         {
@@ -75,6 +80,8 @@ namespace NotesDemo.Controllers
         }
 
         // PUT: api/notes/5
+        [Consumes("application/json")]
+        [Produces("application/json")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(string id, [FromBody] NoteModel model)
         {
@@ -97,6 +104,7 @@ namespace NotesDemo.Controllers
         }
 
         // DELETE: api/notes/5
+        [Consumes("application/json")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

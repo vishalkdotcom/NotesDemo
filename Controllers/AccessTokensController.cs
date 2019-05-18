@@ -26,6 +26,8 @@ namespace NotesDemo.Controllers
         }
 
         // POST: /access-tokens
+        [Consumes("application/json")]
+        [Produces("application/json")]
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult<JwtTokenModel>> Post([FromBody] LoginModel model)
@@ -49,6 +51,8 @@ namespace NotesDemo.Controllers
         }
 
         // POST: /access-tokens/refresh
+        [Consumes("application/json")]
+        [Produces("application/json")]
         [HttpPost("{refresh_token}", Name = "Refresh")]
         public async Task<ActionResult<JwtTokenModel>> Post([FromBody] string refresh_token)
         {
@@ -69,6 +73,7 @@ namespace NotesDemo.Controllers
         }
 
         // DELETE: /access-tokens
+        [Consumes("application/json")]
         [HttpDelete]
         public async Task<IActionResult> Delete([FromBody]string refresh_token)
         {

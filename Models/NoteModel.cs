@@ -5,7 +5,7 @@ namespace NotesDemo.Models
 {
     public class NoteModel
     {
-        public string Id { get; set; }
+        public string Id { get; internal set; }
 
         [Required]
         [StringLength(64)]
@@ -18,6 +18,6 @@ namespace NotesDemo.Models
         [Required]
         public bool IsPinned { get; set; }
 
-        public int CreatedAt { get; set; }
+        public int CreatedAt { get; internal set; }
     }
 }

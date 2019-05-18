@@ -25,6 +25,8 @@ namespace NotesDemo.Controllers
         }
 
         // POST: users
+        [Consumes("application/json")]
+        [Produces("application/json")]
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult<JwtTokenModel>> Register([FromBody]RegisterModel model)

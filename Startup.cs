@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using NotesDemo.Entities;
 using NotesDemo.Mappings;
 using NotesDemo.Services;
@@ -97,6 +98,22 @@ namespace NotesDemo
 
             services.AddScoped<INoteService, NoteService>();
             services.AddScoped<ITokenService, TokenService>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Notes API",
+                    Version = "v1",
+                    Description = "Notes API Demo",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Vishal Kumar",
+                        Email = "hello@vishalk.com",
+                        Url = new Uri("https://vishalk.com")
+                    }
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -116,6 +133,11 @@ namespace NotesDemo
             app.UseAuthentication();
 
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Notes API v1");
+            });
         }
     }
 }

@@ -19,6 +19,8 @@ namespace NotesDemo.Controllers
         }
 
         // GET: me
+        [Produces("application/json")]
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
             var user = await _userManager.GetUserAsync(User);
