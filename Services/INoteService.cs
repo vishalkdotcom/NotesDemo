@@ -10,10 +10,10 @@ namespace NotesDemo.Services
 
         Task<Note> Get(string id);
 
-        Task<List<Note>> GetAllByUserId(string userId);
+        Task<List<Note>> GetByUserId(string userId, int page);
 
         Task<Note> Update(string id, Note note);
-        
+
         Task Remove(string id);
     }
 

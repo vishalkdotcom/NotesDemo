@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using NotesDemo.Entities;
 using NotesDemo.Models;
 using NotesDemo.Services;
@@ -15,17 +14,12 @@ namespace NotesDemo.Controllers
     [ApiController]
     public class AccessTokensController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ITokenService _tokenService;
 
-        public AccessTokensController(IConfiguration configuration,
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
-            ITokenService tokenService)
+        public AccessTokensController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ITokenService tokenService)
         {
-            _configuration = configuration;
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;

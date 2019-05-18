@@ -9,6 +9,7 @@ namespace NotesDemo.Services
 {
     public class NoteService : INoteService
     {
+        private const int MAX_ITEMS = 10;
         private readonly NotesDbContext _dbContext;
 
         public NoteService(NotesDbContext dbContext)
@@ -30,9 +31,12 @@ namespace NotesDemo.Services
             return await GetNoteById(id);
         }
 
-        public async Task<List<Note>> GetAllByUserId(string userId)
+        public async Task<List<Note>> GetByUserId(string userId, int page)
         {
-            return await _dbContext.Notes.Where(i => i.UserId == userId).ToListAsync();
+            return await _dbContext.Notes.Where(i => i.UserId == userId)
+                .Skip((page - 1) * MAX_ITEMS)
+                .Take(MAX_ITEMS)
+                .ToListAsync();
         }
 
         public async Task Remove(string id)

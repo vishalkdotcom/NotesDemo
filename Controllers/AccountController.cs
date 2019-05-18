@@ -13,7 +13,6 @@ namespace NotesDemo.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
 
-
         public AccountController(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;

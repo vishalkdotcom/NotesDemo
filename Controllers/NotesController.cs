@@ -17,12 +17,11 @@ namespace NotesDemo.Controllers
     [ApiController]
     public class NotesController : ControllerBase
     {
-        const int MAX_ITEMS = 10;
         private readonly INoteService _noteService;
         private readonly IMapper _mapper;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public NotesController(INoteService noteService, UserManager<ApplicationUser> userManager, IMapper mapper)
+        public NotesController(IMapper mapper, UserManager<ApplicationUser> userManager, INoteService noteService)
         {
             _userManager = userManager;
             _noteService = noteService;
@@ -35,10 +34,7 @@ namespace NotesDemo.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user != null)
             {
-                var notes = (await _noteService.GetAllByUserId(user.Id))
-                            .Skip((page - 1) * MAX_ITEMS)
-                            .Take(MAX_ITEMS)
-                            .ToList();
+                var notes = await _noteService.GetByUserId(user.Id, page);
                 return _mapper.Map<List<NoteModel>>(notes);
             }
 
