@@ -5,6 +5,14 @@ Notes API Demo: https://notesdemo.azurewebsites.net
 API Docs: https://notesdemo.azurewebsites.net/swagger
 
 
+## Sample Test Data
+
+Download [Insomnia](https://insomnia.rest/download/) app
+
+Import [sample data](https://gist.github.com/vishalkdotcom/09da2ac1ceaff4294770cb614f580bdb) in Insomnia to test
+
+---
+
 ## Prerequisites:
     GIT
     VS 2017, VS Code
@@ -28,3 +36,5 @@ Test the API using any tool, like Postman, Insomnia, Curl, etc.
 ## API Docs
 
 Browse to http://localhost:5000/swagger for api documentation.
+
+---
