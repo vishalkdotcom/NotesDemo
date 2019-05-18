@@ -37,8 +37,8 @@ namespace NotesDemo
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<NotesDbContext>(options => options.UseInMemoryDatabase("NotesDb"));
-            // services.AddDbContext<NotesDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("NotesDb")));
+            // services.AddDbContext<NotesDbContext>(options => options.UseInMemoryDatabase("NotesDb"));
+            services.AddDbContext<NotesDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("NotesDb")));
 
             // Add Jwt Token
             services.AddAuthentication(options =>
