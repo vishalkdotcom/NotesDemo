@@ -6,10 +6,10 @@ API Docs: https://notesdemo.azurewebsites.net/swagger
 
 
 ## Prerequisites:
-    - GIT
-    - VS 2017, VS Code
-    - .NET Core 2.2
-    - SQL Server 2012+
+    GIT
+    VS 2017, VS Code
+    .NET Core 2.2
+    SQL Server 2012+
 
 ## Build & Run
 Modify the database connection string as per your instance and authentication in `appsettings.Development.json` (for local) or in `appsettings.json` (for production).
